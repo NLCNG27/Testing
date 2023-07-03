@@ -12,7 +12,7 @@ from tkinter import messagebox
 
 window = Tk()
 window.title("Book Management System")
-window.geometry("600x200")
+window.geometry("650x200")
 
 
 book_list = []
@@ -108,8 +108,6 @@ def update_price_dialog():
         update_price_label.grid(row=1, column=0)
         update_price.grid(row=1, column=1)
 
-
-        
         # update_price_entry = update_price.get()
 
         def update_price_books():
@@ -136,7 +134,6 @@ def update_price_dialog():
         
         print(original_price)
         update_window.mainloop()
-
 
 
 # reset to beginning
@@ -168,7 +165,9 @@ search_name = Entry(window)
 add_button = Button(window, text="Add Book", command=add_book)
 search_button = Button(window, text="Search Books", command=search_books)
 delete_button = Button(window, text="Delete Books", command=delete_books)
-update_price_dialog_button = Button(window, text="Update Book Prices", command=update_price_dialog)
+
+update_price_dialog_button = Button(window, text="Update Book Prices", command=update_price_dialog) # new
+
 reset_button = Button(window, text = "Reset", command = reset)
 
 title_label.grid(row=0, column=0) 
@@ -180,7 +179,9 @@ price.grid(row=2, column=1)
 search_name.grid(row=4, column=0)
 add_button.grid(row=3, column=0)
 delete_button.grid(row=3, column=1)
-update_price_dialog_button.grid(row=3, column=2)
+
+update_price_dialog_button.grid(row=3, column=2) # new
+
 reset_button.grid(row=3, column=3)
 search_button.grid(row=4, column=1)
 
