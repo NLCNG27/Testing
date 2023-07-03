@@ -88,13 +88,25 @@ def search_books():
 
 def update_price_dialog():
     book_title_price_update = title.get()
-    price_update = price.get()                                
+    
+    for book in book_list:
+        if book.title == book_title_price_update:
+            price_update = book.price
+    # price_update = price.get()                                
     found_books = False
     
-    
-    if book_title_price_update == "" or price_update == "":
+    print("Book Title to be updated:", book_title_price_update)
+
+    print("List to check before updating:")
+    list_books()
+    print("END OF LIST!")
+
+    # if book_title_price_update not in book_list:
+    if book_check(book_title_price_update) == False:
+        print("Update can't run")
         messagebox.showerror("Update Book Prices", "Please enter book title and price needed to be update")
-    else:
+    elif book_check(book_title_price_update):
+        print("Update CAN run.")
         update_window = Tk()
         update_window.title("Update Price")
         update_window.geometry("400x200")
@@ -119,7 +131,6 @@ def update_price_dialog():
             for book in book_list:
                 if book.title == book_title_price_update:
                     print('Book price:', book.price)
-                    print('Ol')
                     print('Update price entry', update_price_entry)
                     book.price = int(update_price_entry)
                     list_books()
@@ -129,10 +140,11 @@ def update_price_dialog():
                 else:
                     messagebox.showinfo("Update Book Prices", "No books found.")
 
+        # Update Book Prices button
         update_price_button = Button(update_window, text="Update Book Prices", command=update_price_books)
         update_price_button.grid(row=3, column=0)
         
-        print(original_price)
+        # print(original_price)
         update_window.mainloop()
 
 
@@ -151,6 +163,11 @@ def list_books():
         print('Genre:', book.genre)
         print('Price:', book.price)
       
+def book_check(title):
+    for book in book_list:
+        if book.title != title:
+            return False
+    return True
         
 title_label = Label(window, text="Title:")
 genre_label = Label(window, text="Genre:")
